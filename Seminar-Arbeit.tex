@@ -76,7 +76,7 @@ In case of ITS, to know whether a node in the network is being uncooperative or 
 
 In ITS, WSN (A context speed advisory scenario Figure 1.1) is used to indicate that the recommended the speed when you have traffic congestion in the vicinity could cause an accident. Therefore, the messages sent between the nodes and the base station must be properly encrypted, and all of the nodes must be trustworthy. Therefore, the self-protection of the whole system is required. However, very hard security policies have a penalty in efficiency, especially in energy and performance, two typical requirements of these applications. Therefore, the security policy to be applied in each situation must be negotiated to make a balance between the necessary security and the efficiency. Additionally, as these situations can change quickly, these policies have to be (re)negotiated. For instance, in the case where malicious software is suspected in a given WSN (detected by intruder detection algorithms), the security needs to be increased, and the suspect nodes must be isolated. To the contrary, on roads where the main interest is to preserve the lifetime of the system and there is no risk of malicious attacks, the security can be a little bit weaker. Similarly, in situations where communication performance is required (e.g., high traffic density) the security could also be relaxed. On the other hand, in exceptional circumstances, the interception of data sent by certain vehicles (e.g., a presidential motorcade) has to be totally avoided. In this case, the security policy applied to these specific nodes must be modified.\par
 There are some important effort being made to develop specific algorithm for WSNs in the fields of trust, security and privacy, such as new algorithms for authentication, positioning, network intrusion detection, efficient key management for dynamic Wireless sensor networks, etc. As a network has many different sensors with different requirements. If the same algorithm has been implemented in all the nodes and the working environment has changed, the present algorithms for some specific nodes needs improvement,i.e, new algorithms are to be implemented within the nodes to work in the changed environment, which was not mainly done by the previous algorithm. So, the nodes have to be adaptive to change accordingly. The main issues captured in the new advanced algorithm are low-level programming abstractions, limited capabilities, different routing protocols,etc. Now as the sensor nodes need to be adaptive to the environment change with the lowest impact for users and without stopping the devices. In addition to it, it is needed to adapt the specific algorithm as required.\par
-The rest of the paper is organized as follows. After this Introduction, Section 2 Discusses different Security Considerations in WSNs with the Security Vulnerabilities and Defense Strategies for WSNs. Section 3 presents three different solutions or Use Cases for Security Re-configuration in WSNs. In further Section 4 The paper Evaluates the Challenges and Approaches for Inter-trust & FamiWare, and we present our Conclusions and the last section 5, gives the list of Acronyms and Terminologies used throughout the paper.  \par
+The rest of the paper is organized as follows. After this Introduction, Section 2 Discusses different Security Considerations in WSNs with the Security Vulnerabilities and Defense Strategies for WSNs. Section 3 presents three different solutions or Use Cases for Security Re-configuration in WSNs. In further Section 4 The paper Evaluates the Challenges and Approaches for Inter-trust \& FamiWare, and we present our Conclusions and the last section 5, gives the list of Acronyms and Terminologies used throughout the paper.  \par
 \section{Security Considerations in WSNs}
 In this section we analyze known Denial of Service (DoS) threats and attacks on privacy and authentication on the four primary levels: the physical layer, link layer, network layer, and transport layer. 
 \subsection{Security Vulnerabilities in WSNs}
@@ -302,6 +302,10 @@ In the next section, we provided practical examples of complete implementations 
 In conclusion, our hope is that the reader of this text has received a general overview of the security mechanisms that can be deployed in a WSN, and is capable of choosing the appropriate protections for his or her use case. With that, we would like to close with the following quote, which already hints at a future where WSN's are distributed all over the world: \par
 "Sensor networks are set to become a truly pervasive technology that will affect our daily lives in important ways. We cannot deploy such a critical technology, however, without first addressing the security and privacy research challenges to ensure that it does not turn against those whom it is meant to benefit" \cite[ pp. 101]{chan;perrig:2003}.\par
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% commented start
+\iffalse
+
 \section{Acronyms \& Terminology}
 \FloatBarrier
 \begin{table}[H]
@@ -349,6 +353,9 @@ In conclusion, our hope is that the reader of this text has received a general o
 	  \end{center}
   \end{table}
 \FloatBarrier
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% commented end
+\fi
 
 
 \begin{thebibliography}{99}
