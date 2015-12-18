@@ -127,10 +127,16 @@ This performance dilemma may be most striking, when evaluating the cryptographic
 An alternative to public key cryptography is found in symmetric key cryptography, and, consequently, a lot of research focuses on these algorithms for the encryption of sensitive data in sensor networks. With these methods, a single shared key is used between the nodes talking to each other and one of the key challenges is the distribution of said key \cite{sen:2009}. For this, it might be interesting to consider a hybrid approach, where a public key of the network key distribution center (KDC) is distributed to the sensor nodes, and the shared key for symmetric cryptography is distributed via public key cryptography.\par
 A common approach in WSNs is to have the usually more powerful base station become the KDC for the network, as that usually requires keeping track of nodes and their keys, blacklisting keys in case a node corruption is detected \cite{sen:2009}. However, the drawback of this approach is that the base station becomes a single point of failure for the network.\par
 There are several approaches, with which a KDC can manage the network keys and encryption based on heuristics. As described earlier, one might distinguish between more sensitive traffic, such as symmetric key exchanges, which requires stronger encryption. In a deterministic approach, there are predefined encryption mechanisms for different packets. On the other hand, a probabilistic and distributed schemes might be chosen \cite{sen:2009}. For instance, a random subset of a key ring can be shared with a number of nodes, which just have to find one common key to encrypt their communications. Furthermore, the subset of keys available to a node can be used as a fingerprint to identify a node \cite{sen:2009}.\par
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% commented start - not used in solutions
+\iffalse
+
 \subsubsection{Protecting Against DoS attacks}
 Since a DoS attack can occur on multiple network layers, barriers also have to be established on each layer that can be attacked. At the same time, defending against these attacks is very costly, and it should be assumed that a determined attacker will always be able to mount an attack with enough processing power to overpower the capabilities of sensor nodes. In light of this, mitigation strategies are useful in limiting the impact and damage that can easily be inflicted in WSNs.\par
 Within the physical network layer, a jamming attack can be prevented by such mechanisms as frequency hopping and code spreading, and more generally by spread-spectrum communication \cite{sen:2009}. Unfortunately these techniques require more complex design and consume more energy, making a defense of the physical network layer impractical for many applications of WSNs.\par
 Against collision attacks in the link layer, a preferred defense mechanism would be the use of error-correcting codes, which also work for mitigating environmental or probabilistic errors \cite{sen:2009}. The drawback of these codes is that they add to the processing overhead during communication, and according to Sen, there is currently no complete defense against collision attacks available \cite{sen:2009}.  In order to protect against the selective forwarding attack, it is possible to send data over multiple paths \cite{sen:2009}. One novel approach to defend against flooding DoS attacks put forward by researchers is to require that clients solve a puzzle when connecting, in order to demonstrate their willingness to contribute to the network \cite{sen:2009}. As with many other solutions, this puts a greater burden on the client, which might not be desirable for certain low-power use cases. The last defense mechanism in the link layer is to secure that the multicast and broadcast messages cannot be intercepted by unauthorized third parties \cite{sen:2009}. \par
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% commented end
+\fi
 \subsubsection{Protecting Against Routing Protocol Attacks}
 Securing the routing protocol has the main goal of ensuring the integrity, authenticity, and correct transmission of messages in the network \cite{sen:2009}. Consequently, this means securing all traffic in the network with one of the previously described encryption algorithms. There exist a number of secured routing protocols which can be used to secure the sensor network. \par
 The first routing protocol is \si{micro}TESLA (the micro version of the timed efficient streaming loss-tolerant authentication protocol), another protocol is INENS (intrusion tolerant routing protocol in WSNs), yet another protocol is SNEP (secure network encryption protocol), and there is also TRANS (trust routing for location aware sensor networks); additionally there are protocols built upon the other protocols, such as SPINS which incorporates \si{micro}TESLA and SNEP \cite{sen:2009}\par
@@ -155,18 +161,23 @@ With the goal of reducing unnecessary data transmission in order to save energy,
 For plaintext data aggregation, a secure information aggregation (SIA) framework exists \cite{sen:2009}.. In SIA clusters, there are resource-enhanced cluster heads as well as sensor nodes. Here, the cluster heads have a separate encryption key for talking to the nodes and forwarding data, for instance to a base station. Again, a combination of routing protocol and encryption mechanisms should be used for securing data processing in the network.\par
 Known methods for aggregating plaintext data in sensor networks are either securing in-network processing (SINP) \cite{deng;etal:2003} , or energy-efficient secure pattern-based data aggregation (ESPDA) \cite{cam;etal:2003}, \cite{cam;etal:2005}, or secure differential data aggregation (SDDA) scheme based on pattern codes \cite{cam;etal:2004} , and lastly, witness-based data aggregation (WDA) \cite{du;etal:2003}.\par
 A second approach is to provide data aggregation / calculation on encrypted data, with special transformation algorithms on the encrypted data - however, Sen cautions that this may reduce the security level \cite{sen:2009}. This is also known as a privacy homomorphism (PH). An PH implementation called concealed data aggregation (CDA) is capable of calculating the sum's and average's in hierarchical WSN's \cite{girao;etal:2005}, or alternatively, the HSC (homomorphic stream cipher) approach can be used \cite{castelluccia;etal:2005} .\par
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% commented start - not used in solutions
+\iffalse
 \subsubsection{Defending Against Physical Attacks}
 Protection against physical attacks requires the utilization of special tamper-proof hardware in the network's sensor nodes. It is not difficult to imagine self-terminating nodes that commit suicide, as soon they detect physical tampering, however, such hardware obviously comes at some cost and may not be optimal for wide-spread usage in supposedly cheap sensor networks \cite{sen:2009}. The software-based attestation for embedded devices (SWATT) mechanism can be used to detect physical attacks by detecting sudden changes in the memory contents of a node \cite{seshadri;etal:2004}.\par
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% commented end
+\fi
 \subsubsection{Trust Management}
 Trust and reputation-based security frameworks can offer further protection, when even cryptographic security mechanisms fail to deliver optimal results \cite{sen:2009}. For instance, they make it possible to judge the quality and reliability of the data provided by particular sensor nodes, as well as the health and correctness from  aggregator nodes, and the network transmission quality \cite{sen:2009}. The main drawback of such models is that they also require a certain computational overhead. Models, such as the personalized trust model "PET" \cite{liang;shi:2005}, have been proposed by various researchers, and our detailed use cases in the next section will also feature a trust-based approach.\par
 \section{Security Policy Reconfiguration Solutions in WSNs}
 \label{sec:main}
 As was demonstrated in the previous section, the optimal security policy choice depends on the situation, and the situation is not always known in advance. In this section, we address this dilemma by presenting three practical solutions for dynamic reconfiguration in WSNs. 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% commented start
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% commented start 
+% - additional paper / solution
+% - too similar to other solutions, to be of much value
 \iffalse
 
 \subsection{A dynamic key management scheme for dynamic wireless sensor networks Paper}
-Raphael:
 
 Dynamic key management: dynamically combine both key pre-distribution and post-deployment key establishment:
 - why key mgmt central for dwsn
@@ -276,7 +287,7 @@ FamiWare uses VSpec tree at runtime to handle the reconfiguration and the task t
 
 \subsection{Evaluation of Inter-trust and FamiWare}
 This Section talks mainly about the Challenges and Approaches for INTER-TRUST \& FamiWare. Here we present the different cases and the problem areas with respect to the existing scenarios with the WSNs, and how the given approach gives the solution for it.
-\subsection{Challenges and Approaches for INTER-TRUST \& FamiWare}
+\subsubsection{Challenges and Approaches for Inter-trust and FamiWare}
 The main challenges that need to be taken into account in order to add security to WSNs and to dynamically (re)configure the security level at runtime, can be described as follows:
 \begin{enumerate}
 	\item  "Build secure applications that run on heterogeneous nodes with limited capabilities \cite{Pinto;etal:2013}.\par
@@ -292,8 +303,8 @@ As WSNs are composed of a large number of tiny devices, the self-protection mech
 \section{Conclusion}
 \label{sec:conclusion}
 In this paper we have discussed the increasing usages of WSNs and we discussed an example of ITS for explaining the current situation of WSNs. The paper has presented three different solutions in further sections for the Dynamic re-configuration of security policies.\par
-In the first section, the major attack venues and defense mechanisms appropriate in WSNs were introduced, along with an outline as to why it is crucial to have these security mechanisms in place. \par
-In the next section, we provided practical examples of complete implementations for providing end-to-end security in dynamic wireless sensor networks.\par
+In section \ref{sec:security}, the major attack venues and defense mechanisms appropriate in WSNs were introduced, along with an outline as to why it is crucial to have these security mechanisms in place. \par
+In section \ref{sec:main}, we provided practical examples of complete implementations for providing end-to-end security in dynamic wireless sensor networks.\par
 In conclusion, our hope is that the reader of this text has received a general overview of the security mechanisms that can be deployed in a WSN, and is capable of choosing the appropriate protections for his or her use case. With that, we would like to close with the following quote, which already hints at a future where WSN's are distributed all over the world: \par
 "Sensor networks are set to become a truly pervasive technology that will affect our daily lives in important ways. We cannot deploy such a critical technology, however, without first addressing the security and privacy research challenges to ensure that it does not turn against those whom it is meant to benefit" \cite{chan;perrig:2003}.\par
 
