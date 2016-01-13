@@ -23,8 +23,6 @@
 \usepackage{float}
 \usepackage{url}
 
-
-
 \renewcommand{\mtctitle}{Contents}
 \setcounter{tocdepth}{0}
 \pagestyle{myheadings}
@@ -150,7 +148,7 @@ Because centralized node identity management through the KDC or another central 
 The first approach uses a randomized multicast of the node location to a randomly selected number of witnesses, whereby the number of  witnesses has to be chosen to be large enough to guarantee that in each neighborhood there are at least two witnesses \cite{sen:2009}. The number of witnesses can be calculated with the mathematics for the birthday paradox, which was originally used to calculate the probability of two people in a random group of people having the same birthday. Each node broadcasts its location to the network, and each node stores the location information of its neighbors. If a conflicting claim is found, the duplicate node is revoked \cite{sen:2009}. This method can find all duplicates in the network, if all the broadcasts reach all the nodes in the network, however this broadcast then introduces a high total communication cost for the network.\par
 The second method uses the network topology and a line-selected multicast to detect replication. In order to reduce the communication overhead of the first multicast approach, every node chooses one random node as a witness which will keep track of the node's location \cite{sen:2009}. When the location is communicated to the witness, every node forwarding the information also keeps track of the location, and checks if there is any conflict. Therefore, if any node claims to be in an incorrect location,  as soon as the two paths for the location witness intersect, it is possible to detect the fraudulent claim.\par
 \subsubsection{Preventing Traffic Analysis}
-If the sensor network has a single base station or key distribution center, then the network has a single point of failure. An attacker might want to identify as a crucial device in the network, and to do so, traffic analysis would be one option. To defend against such an attack, a multiple parent routing scheme should first be introduced, where any node can forward packets to one of many parents \cite{sen:2009}. This creates a less deterministic network routing. Furthermore, the network hops towards the base station can be randomized through a controlled random walk. Additionally, random fake paths can be introduced, and fake communication hotspots / base stations can be added to the network. In combination, these methods together make it difficult to conduct traffic analysis for finding the base station.\par
+If the sensor network has a single base station or key distribution center, then the network has a single point of failure. An attacker might want to identify as a crucial device in the network, and to do so, traffic analysis would be one option. To defend against such an attack, a multiple parent routing scheme should first be introduced, where any node can forward packets to one of many parents \cite{sen:2009}. This creates a less deterministic network routing. Furthermore, the network hops towards the base station can be randomized through a controlled random walk. Additionally, random fake paths can be introduced, and fake communication hotspots or base stations can be added to the network. In combination, these methods together make it difficult to conduct traffic analysis for finding the base station.\par
 \subsubsection{Protecting Sensor Privacy}
 While encryption is one way to protect sensitive data, there is still a risk of the encrpytion being broken and the data being exposed. If the goal is to prevent the disclosure of sensitive data, even when encryption is broken, then it becomes necessary to strip identifying information from the data and make it anonymous. \par
 The anonymization method that can be used to reduce the impact of a broken encryption key or a compromised node, is to store the sensitive data in a decentralized way in a tree structure over a range of nodes \cite{sen:2009}. In order to do calculations on the data, a number of nodes has to be involved collaboratively. In addition to that, the methods for preventing traffic analysis and routing protocol attacks should also be employed.\par
@@ -163,7 +161,7 @@ One approach is to have an IDS implemented at node level, where the nodes do not
 With the goal of reducing unnecessary data transmission in order to save energy, many sensor networks make use of data aggregation at a level of node clusters. However, if such an cluster head is compromised, it becomes easy to either collect sensitive information and to inject false data in the network \cite{sen:2009}. However, there is a conflict between securing data aggregation and protecting data confidentiality, as in order to best aggregate data, it is usually necessary to process decrypted plaintext data. One framework that can be used for secure data aggregation is TAG, which uses an SQL-like language for querying clusters in the WSN \cite{sen:2009}.\par
 For plaintext data aggregation, a secure information aggregation (SIA) framework exists \cite{sen:2009}. In SIA clusters, there are resource-enhanced cluster heads as well as sensor nodes. Here, the cluster heads have a separate encryption key for talking to the nodes and forwarding data, for instance to a base station. Again, a combination of routing protocol and encryption mechanisms should be used for securing data processing in the network.\par
 Known methods for aggregating plaintext data in sensor networks are either securing in-network processing (SINP) \cite{deng;etal:2003} , or energy-efficient secure pattern-based data aggregation (ESPDA) \cite{cam;etal:2003}, \cite{cam;etal:2005}, or secure differential data aggregation (SDDA) scheme based on pattern codes \cite{cam;etal:2004} , and lastly, witness-based data aggregation (WDA) \cite{du;etal:2003}.\par
-A second approach is to provide data aggregation / calculation on encrypted data, with special transformation algorithms on the encrypted data - however, Sen cautions that this may reduce the security level \cite{sen:2009}. This is also known as a privacy homomorphism (PH). An PH implementation called concealed data aggregation (CDA) is capable of calculating the sum's and average's in hierarchical WSN's \cite{girao;etal:2005}, or alternatively, the HSC (homomorphic stream cipher) approach can be used \cite{castelluccia;etal:2005} .\par
+A second approach is to provide data aggregation and process calculations on encrypted data, by using special transformation algorithms on the encrypted data. The drawback to this approach is that the security level might be reduced \cite{sen:2009}. This is also known as a privacy homomorphism (PH). An PH implementation called concealed data aggregation (CDA) is capable of calculating the sum's and average's in hierarchical WSN's \cite{girao;etal:2005}, or alternatively, the HSC (homomorphic stream cipher) approach can be used \cite{castelluccia;etal:2005} .\par
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% commented start - not used in solutions
 \iffalse
 \subsubsection{Defending Against Physical Attacks}
@@ -205,6 +203,9 @@ CL-EKM was implemented with Contiki OS and TinyECC, and the performance was eval
   \caption{Performance of ECC algorithm's \cite{seo;etal:2015}}
   \label{fig:06}
 \end{figure}
+%% Figure 06-01-a,b,c: Computation overhead for pairwise master/encryption key establishment. (a) Encapsulating key information. (b) Decapsulating key information. (c) Pairwise encryption key establishment.
+%% Figure 06-02-a,b,c: Energy consumption for pairwise master/encryption key establishment. (a) Encapsulating key information. (b) Decapsulating key information. (c) Pairwise encryption key establishment.
+
 Figure \ref{fig:07} shows the network power consumption for variable security configurations based on either a random walk or a Manhattan mobility model. The simulations are based on a 400 x 400 m grid, with 100 L-Sensors and 25 H-Sensors deployed. The configurable security settings are a) \emph{tbackoff} (how many seconds from a node leave until cluster heads update the cluster key, and b) \emph{thold} (how many seconds the pairwise key is kept in memory).\par
 \begin{figure}[ht]
 	\begin{center}
@@ -213,6 +214,10 @@ Figure \ref{fig:07} shows the network power consumption for variable security co
   \caption{Performance Impact of Security Configurations \cite{seo;etal:2015}}
   \label{fig:07}
 \end{figure}
+
+%% Figure 07-01-a,b,c: Node movement simulation results in random walk mobility model. (a) Energy consumption of one H -sensor for cluster key update for one day (T hold = 100 sec). (b) Energy consumption of one H -sensor for pairwise key establishment for one day (T backo f f = 6 sec). (c) Energy consumption of one L-sensor for pairwise key establishment for one day (T backo f f = 6 sec).
+%% Figure 07-02-a,b,c: Node movement simulation results in Manhattan mobility model. (a) Energy consumption of one H -sensor for cluster key update for one day (T hold = 100 sec). (b) Energy consumption of one H -sensor for pairwise key establishment for one day (T backo f f = 6 sec). (c) Energy consumption of one L-sensor for pairwise key establishment for one day (T backo f f = 6 sec).
+
 The larger tbackoff, the lower the security level is. Thus, there is a tradeoff between the security level and the energy consumption of the H -sensor. However, at high speeds (>16 m/s), tbackoff should be less than 1s in order to minimize the number of cluster key updates. At low speeds, 1, 2 or 3 seconds are a reasonable choice for the H-sensors \cite{seo;etal:2015}.\par 
 The effect of thold increases as the node speed increases. As thold increases, the energy consumption decreases because in the event that the L-sensors return to the old clusters before the timers expire, no new pairwise master key establishment is necessary \cite{seo;etal:2015}.\par
 Overall, this example scenario implementing a certificateless key management scheme for WSNs demonstrates how it is required to make tradeoffs between security and performance on a high level, whenever a WSN is built. The main question therefore always has to be, how sensitive the data aggregated and forwarded by the network is, and what protection efforts are necessary in order to protect that data.
@@ -224,7 +229,7 @@ With this system in place, policies can be relaxed to save resources: expensive 
 The group's solution to the challenge of modelling such a system is TESP (Trust-based Enforcement of Security Policies), a "calculus inspired by [DTU Compute, Technical University of Denmark], that enriches the StoKlaim \cite{sen:2009} formalism with probabilistic aspects for security policies and with primitives for managing reputation scores. The main technical challenge addressed in this work is the integration of all these elements (in particular, probabilistic aspects, security policies, and reputations) in a uniform framework. TESP (Trust-based Enforcement of Security Policies) is a distributed process calculus which can be used to model security policies and their probabilistic enforcement, relying on a reputation system to infer probabilities. The calculus, displayed in Figure \ref{fig:03}, enriches (a subset of) StoKlaim with primitives for handling reputations and inherits the aspect-oriented mind-set of AspectKP for the design of security policies."\cite{vigo;etal:2014}.\par
 \begin{figure}[ht]
 	\begin{center}
-  \includegraphics[width=1.0\textwidth,natwidth=501,natheight=173]{./Talk1/figures/figure-03.jpg}
+  \includegraphics[width=1.0\textwidth,natwidth=1822,natheight=510]{./Talk1/figures/figure-03.png}
   \end{center}
   \caption{Syntax: Aspects and Policies \cite{vigo;etal:2014}}
   \label{fig:03}
@@ -234,17 +239,17 @@ With a reputation system in place, the base station chooses for each new interac
 
 \begin{figure}[ht]
 	\begin{center}
-  \includegraphics[width=0.8\textwidth,natwidth=631,natheight=345]{./Talk1/figures/figure-04.png}
+  \includegraphics[width=0.8\textwidth,natwidth=1526,natheight=772]{./Talk1/figures/figure-04.png}
   \end{center}
   \caption{Ratio between unchecked and forwarded messages \cite{vigo;etal:2014}}
   \label{fig:04}
 \end{figure}
 
-As we expect in Figure \ref{fig:04}, we see that the better the sensor behavior, the higher the ratio of unchecked messages, and thus the more resources saved. However, Fig. \ref{fig:05} seems not to confirm the results of the model checking analysis: the ratio of corrupted messages over the forwarded is lower for $\theta$ = 0.8 than for $\theta$ = 0.2. 
+As we expect in Figure \ref{fig:04}, we see that the better the sensor behavior, the higher the ratio of unchecked messages, and thus the more resources saved. However, Figure \ref{fig:05} seems not to confirm the results of the model checking analysis: the ratio of corrupted messages over the forwarded is lower for $\theta$ = 0.8 than for $\theta$ = 0.2. 
 
 \begin{figure}[ht]
 	\begin{center}
-  \includegraphics[width=0.8\textwidth,natwidth=429,natheight=239]{./Talk1/figures/figure-05.jpg}
+  \includegraphics[width=0.8\textwidth,natwidth=1582,natheight=764]{./Talk1/figures/figure-05.png}
   \end{center}
   \caption{Ratio between corrupted and forwarded messages \cite{vigo;etal:2014}.}
   \label{fig:05}
@@ -304,7 +309,7 @@ As we have seen in WSNs each node is different and provides different services. 
 When the environment or the security requirements change at runtime, the system must be self-protected to maintain a proper and secure functioning" \cite{Pinto;etal:2013}. \par
 As WSNs are composed of a large number of tiny devices, the self-protection mechanism should consume the least number of resources as possible" \cite{Pinto;etal:2013}. Our approach says, it is proven that the FamiWare pays special attention to the efficiency of the nodes. The resource consumption of Famiware is optimal for certain typical type of sensors, and it is also scalable to a number of nodes.
 \end{enumerate}
-\section{Conclusion}
+\section{Summary and Conclusion}
 \label{sec:conclusion}
 In this paper we have discussed the increasing usages of WSNs and we discussed an example of ITS for explaining the current situation of WSNs. The paper has presented three different solutions in further sections for the Dynamic re-configuration of security policies.\par
 In section \ref{sec:security}, the major attack venues and defense mechanisms appropriate in WSNs were introduced, along with an outline as to why it is crucial to have these security mechanisms in place. \par
