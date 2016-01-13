@@ -1,3 +1,5 @@
+\iffalse
+
 \documentclass[12pt,a4paper,twoside]{report}
 \usepackage[german,english]{babel}
 \usepackage[latin1]{inputenc}
@@ -20,8 +22,6 @@
 \usepackage{minitoc}
 \usepackage{float}
 \usepackage{url}
-\usepackage[]{siunitx}
-\usepackage{placeins}
 
 
 
@@ -43,7 +43,10 @@
 \setcounter{secnumdepth}{3}
 
 \tableofcontents
+
 \cleardoublepage
+
+\fi
 
 \chapter{Security Policy Reconfiguration Solutions in Wireless Sensor Networks}
 \markboth{Security Policy Reconfiguration Solutions in Wireless Sensor Networks}{}
@@ -67,7 +70,7 @@ Using a large number of sensors increases the chances of communication disturban
 In case of ITS, to know whether a node in the network is being uncooperative or malicious is really crucial for preventing intentionally wrong instructions being sent to a vehicle. Furthermore, these systems are very dynamic, and their contextual environment changes very frequently, so the security policies need to adapt to the changing environment. The ITS infrastructure is composed of extremely heterogeneous devices where both the monitoring and the deployment and management of the security policies must be performed in different ways.
 \begin{figure}[ht]
 	\begin{center}
-  \includegraphics[width=0.6\textwidth,natwidth=652,natheight=510]{./figures/figure-01.png}
+  \includegraphics[width=0.8\textwidth,natwidth=652,natheight=510]{./Talk1/figures/figure-01.png}
   \end{center}
   \caption{A context speed advisory (CSA) scenario \cite{Pinto;etal:2013}.}
   \label{fig:01}
@@ -98,9 +101,10 @@ Some algorithms for routing WSN's require acknowledgement packet transmission. W
 \subsubsection{Transport Layer}
 The Transport Layer is vulnerable to flooding attacks and desynchronization attacks. The flooding attack exhausts the node's memory by repeatedly making a new connection request until resources required by each connection have reached a maximum limit. Thus, further legitimate requests are ignored.\par
 An attacker may use desynchronization by disrupting existing connections. This can be done by repeatedly spoofing messages to an end host, resulting in the request for retransmission of missed framed. The attacker may time this to hinder the end host's ability to exchange data, causing them to waste energy attempting to recover from errors which do not exist. \par
-To summarize, we list the layers and their respective attack vulnerabilities in table \ref{tab:01}.  \par
-\FloatBarrier
+To summarize, we list the layers and their respective attack vulnerabilities in Table \ref{tab:01}.  \par
   \begin{table}[h]
+	\caption{Attack Vectors in the Network Layer}
+	\label{tab:01}
   	\begin{center}
     \begin{tabular}{|c|c|} \hline
 	        Layer & Attack \\ \hline\hline
@@ -112,7 +116,6 @@ To summarize, we list the layers and their respective attack vulnerabilities in 
 	  \end{center}
   \end{table}
   \label{tab:01}
-\FloatBarrier
 \subsubsection{Attacks on Privacy}
 Let us now analyze attacks on secrecy and authentication. We begin with the node replication attack in which an attacker copies a node into the network by replicating an existing node's identifier. This node copy may cause severe damage to the communication by corrupting and forwarding the packets in wrong routes. Sen adds that "this may also lead to network partitioning, communication of false sensor readings. In addition, if the attacker gains physical access to the entire network, it is possible for him to copy the cryptographic keys and use these keys for message communication from the replicated node. The attacker can also place the replicated node in strategic locations in the network so that he could easily manipulate a specific segment of the network, possibly causing a network partitioning" \cite{sen:2009}.\par
 In addition to DoS attacks, WSNs are vulnerable to attacks on privacy and authentication. This is partially a side effect of the network's ability to automate data collection through efficient sensor deployment. Unfortunately, protecting sensitive data in wireless networks is no easy task. This is especially so because seemingly innocuous data might give the attacker enough material to derive sensitive data. Moreover, a large amount of data is easily accessible through remote access mechanisms, so the attacker does not need to be present to get his or her hands on the data and may remain anonymous. The adversary may even monitor several sites at once.  We will take a look at a few common attacks on sensor data privacy.\par
@@ -139,7 +142,7 @@ Against collision attacks in the link layer, a preferred defense mechanism would
 \fi
 \subsubsection{Protecting Against Routing Protocol Attacks}
 Securing the routing protocol has the main goal of ensuring the integrity, authenticity, and correct transmission of messages in the network \cite{sen:2009}. Consequently, this means securing all traffic in the network with one of the previously described encryption algorithms. There exist a number of secured routing protocols which can be used to secure the sensor network. \par
-The first routing protocol is \si{micro}TESLA (the micro version of the timed efficient streaming loss-tolerant authentication protocol), another protocol is INENS (intrusion tolerant routing protocol in WSNs), yet another protocol is SNEP (secure network encryption protocol), and there is also TRANS (trust routing for location aware sensor networks); additionally there are protocols built upon the other protocols, such as SPINS which incorporates \si{micro}TESLA and SNEP \cite{sen:2009}\par
+The first routing protocol is $\mu$TESLA (the micro version of the timed efficient streaming loss-tolerant authentication protocol), another protocol is INENS (intrusion tolerant routing protocol in WSNs), yet another protocol is SNEP (secure network encryption protocol), and there is also TRANS (trust routing for location aware sensor networks); additionally there are protocols built upon the other protocols, such as SPINS which incorporates $\mu$TESLA and SNEP \cite{sen:2009}\par
 \subsubsection{Defense Against the Sybil Attack}
 In order to protect against the sybil attack, it is necessary that the nodes of the network can be correctly identified, and that every node exists only once. In other words, the network needs to be capable of identifying fake / multiplied nodes, for instance by keeping track of all the network nodes and their respective keys and identities. This can be achieved either by having specific keys for each node, or by assigning different radio channels to nodes in the neighborhood and listening to those channels \cite{sen:2009}. In networks with random key predistribution, it is possible to use the keyring of a node to identify the node.\par
 \subsubsection{Managing the Node Replication Attack}
@@ -158,7 +161,7 @@ In a widely deployed sensor network, it must be assumed that some nodes can beco
 One approach is to have an IDS implemented at node level, where the nodes do not exchange intrusion data, whereas in a second approach, a cooperative IDS is implemented where each node has an intrusion detection agent to detect local attacks, but the intrusion data is exchanged between nodes in order to detect global attacks. A third approach is to use a hierarchical architecture, where nodes are clustered and cluster heads manage the local traffic and intrusion detection for the cluster \cite{sen:2009}. One method to detect intrusion on a global is implemented with the interleaved hop-by-hop authentication (IHOP) scheme. In order to detect local intrusion, a local intrusion detection system such as local intrusion detection system (LIDS) can be deployed on each node [5]. LIDS can also work on a global level, if the nodes collaborate to exchange security data and intrusion alerts amongst each other \cite{sen:2009}.\par
 \subsubsection{Secure Data Aggregation}
 With the goal of reducing unnecessary data transmission in order to save energy, many sensor networks make use of data aggregation at a level of node clusters. However, if such an cluster head is compromised, it becomes easy to either collect sensitive information and to inject false data in the network \cite{sen:2009}. However, there is a conflict between securing data aggregation and protecting data confidentiality, as in order to best aggregate data, it is usually necessary to process decrypted plaintext data. One framework that can be used for secure data aggregation is TAG, which uses an SQL-like language for querying clusters in the WSN \cite{sen:2009}.\par
-For plaintext data aggregation, a secure information aggregation (SIA) framework exists \cite{sen:2009}.. In SIA clusters, there are resource-enhanced cluster heads as well as sensor nodes. Here, the cluster heads have a separate encryption key for talking to the nodes and forwarding data, for instance to a base station. Again, a combination of routing protocol and encryption mechanisms should be used for securing data processing in the network.\par
+For plaintext data aggregation, a secure information aggregation (SIA) framework exists \cite{sen:2009}. In SIA clusters, there are resource-enhanced cluster heads as well as sensor nodes. Here, the cluster heads have a separate encryption key for talking to the nodes and forwarding data, for instance to a base station. Again, a combination of routing protocol and encryption mechanisms should be used for securing data processing in the network.\par
 Known methods for aggregating plaintext data in sensor networks are either securing in-network processing (SINP) \cite{deng;etal:2003} , or energy-efficient secure pattern-based data aggregation (ESPDA) \cite{cam;etal:2003}, \cite{cam;etal:2005}, or secure differential data aggregation (SDDA) scheme based on pattern codes \cite{cam;etal:2004} , and lastly, witness-based data aggregation (WDA) \cite{du;etal:2003}.\par
 A second approach is to provide data aggregation / calculation on encrypted data, with special transformation algorithms on the encrypted data - however, Sen cautions that this may reduce the security level \cite{sen:2009}. This is also known as a privacy homomorphism (PH). An PH implementation called concealed data aggregation (CDA) is capable of calculating the sum's and average's in hierarchical WSN's \cite{girao;etal:2005}, or alternatively, the HSC (homomorphic stream cipher) approach can be used \cite{castelluccia;etal:2005} .\par
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% commented start - not used in solutions
@@ -171,7 +174,7 @@ Protection against physical attacks requires the utilization of special tamper-p
 Trust and reputation-based security frameworks can offer further protection, when even cryptographic security mechanisms fail to deliver optimal results \cite{sen:2009}. For instance, they make it possible to judge the quality and reliability of the data provided by particular sensor nodes, as well as the health and correctness from  aggregator nodes, and the network transmission quality \cite{sen:2009}. The main drawback of such models is that they also require a certain computational overhead. Models, such as the personalized trust model "PET" \cite{liang;shi:2005}, have been proposed by various researchers, and our detailed use cases in the next section will also feature a trust-based approach.\par
 \section{Security Policy Reconfiguration Solutions in WSNs}
 \label{sec:main}
-As was demonstrated in the previous section, the optimal security policy choice depends on the situation, and the situation is not always known in advance. In this section, we address this dilemma by presenting three practical solutions for dynamic reconfiguration in WSNs. 
+As was demonstrated in the previous section, the optimal security policy choice depends on the situation, and the situation is not always known in advance. In this section, we address this dilemma by presenting three practical solutions for dynamic reconfiguration of network security policies. These solutions have all been selected, because they take into consideration the special requirements of sensor networks, such as optimized energy consumption and low processing overhead while still providing adequate security. Therefore the examples are particularly suited for application in dynamic WSNs.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% commented start 
 % - additional paper / solution
 % - too similar to other solutions, to be of much value
@@ -197,7 +200,7 @@ The network itself knows seven phases \cite{seo;etal:2015}. In the deployment ph
 CL-EKM was implemented with Contiki OS and TinyECC, and the performance was evaluated by using the Contiki simulator COOJA \cite{seo;etal:2015}. Figure \ref{fig:06} shows the performance and power consumption of various ECC based key management schemes. \par
 \begin{figure}[ht]
 	\begin{center}
-  \includegraphics[width=1.0\textwidth,natwidth=1496,natheight=706]{./figures/figure-06.png}
+  \includegraphics[width=1.0\textwidth,natwidth=1496,natheight=706]{./Talk1/figures/figure-06.png}
   \end{center}
   \caption{Performance of ECC algorithm's \cite{seo;etal:2015}}
   \label{fig:06}
@@ -205,7 +208,7 @@ CL-EKM was implemented with Contiki OS and TinyECC, and the performance was eval
 Figure \ref{fig:07} shows the network power consumption for variable security configurations based on either a random walk or a Manhattan mobility model. The simulations are based on a 400 x 400 m grid, with 100 L-Sensors and 25 H-Sensors deployed. The configurable security settings are a) \emph{tbackoff} (how many seconds from a node leave until cluster heads update the cluster key, and b) \emph{thold} (how many seconds the pairwise key is kept in memory).\par
 \begin{figure}[ht]
 	\begin{center}
-  \includegraphics[width=1.0\textwidth,natwidth=1502,natheight=800]{./figures/figure-07.png}
+  \includegraphics[width=1.0\textwidth,natwidth=1502,natheight=800]{./Talk1/figures/figure-07.png}
   \end{center}
   \caption{Performance Impact of Security Configurations \cite{seo;etal:2015}}
   \label{fig:07}
@@ -221,7 +224,7 @@ With this system in place, policies can be relaxed to save resources: expensive 
 The group's solution to the challenge of modelling such a system is TESP (Trust-based Enforcement of Security Policies), a "calculus inspired by [DTU Compute, Technical University of Denmark], that enriches the StoKlaim \cite{sen:2009} formalism with probabilistic aspects for security policies and with primitives for managing reputation scores. The main technical challenge addressed in this work is the integration of all these elements (in particular, probabilistic aspects, security policies, and reputations) in a uniform framework. TESP (Trust-based Enforcement of Security Policies) is a distributed process calculus which can be used to model security policies and their probabilistic enforcement, relying on a reputation system to infer probabilities. The calculus, displayed in Figure \ref{fig:03}, enriches (a subset of) StoKlaim with primitives for handling reputations and inherits the aspect-oriented mind-set of AspectKP for the design of security policies."\cite{vigo;etal:2014}.\par
 \begin{figure}[ht]
 	\begin{center}
-  \includegraphics[width=1.0\textwidth,natwidth=501,natheight=173]{./figures/figure-03.jpg}
+  \includegraphics[width=1.0\textwidth,natwidth=501,natheight=173]{./Talk1/figures/figure-03.jpg}
   \end{center}
   \caption{Syntax: Aspects and Policies \cite{vigo;etal:2014}}
   \label{fig:03}
@@ -231,7 +234,7 @@ With a reputation system in place, the base station chooses for each new interac
 
 \begin{figure}[ht]
 	\begin{center}
-  \includegraphics[width=0.8\textwidth,natwidth=631,natheight=345]{./figures/figure-04.png}
+  \includegraphics[width=0.8\textwidth,natwidth=631,natheight=345]{./Talk1/figures/figure-04.png}
   \end{center}
   \caption{Ratio between unchecked and forwarded messages \cite{vigo;etal:2014}}
   \label{fig:04}
@@ -241,7 +244,7 @@ As we expect in Figure \ref{fig:04}, we see that the better the sensor behavior,
 
 \begin{figure}[ht]
 	\begin{center}
-  \includegraphics[width=0.8\textwidth,natwidth=429,natheight=239]{./figures/figure-05.jpg}
+  \includegraphics[width=0.8\textwidth,natwidth=429,natheight=239]{./Talk1/figures/figure-05.jpg}
   \end{center}
   \caption{Ratio between corrupted and forwarded messages \cite{vigo;etal:2014}.}
   \label{fig:05}
@@ -263,13 +266,6 @@ A sensor node is a composition of features from asset of common and variable fea
 \end{enumerate}
 Each device has some other features, and can be represented by its types and the FamiWare services that need to be instantiated in that particular device according to the applications requirements. Regarding their types, devices can be of high capacity computers and other sensors. For FamiWare, the variability is decided for each device, so the FamiWare services instantiated in each device can be different. Among other services, FamiWare is composed of three optional services: monitoring, context awareness, and reconfiguration. The FamiWare is checked on different types of characteristics such as memory consumption, battery level, and status of network connections.\par
 \subsubsection{Dynamic Security Frameworks: Inter-trust}
-\begin{figure}[ht]
-	\begin{center}
-  \includegraphics[width=1.0\textwidth,natwidth=769,natheight=412]{./figures/figure-02.png}
-  \end{center}
-  \caption{The Inter-trust framework \cite{ayed;etal:2013}.}
-  \label{fig:02}
-\end{figure}
 
 The security framework is a reusable set of modules that can be customized to develop trustworthy applications. The framework describes the functionalities of each module that can be distinguished in a security framework. There are two different frameworks:\par
 
@@ -279,6 +275,14 @@ The security framework is a reusable set of modules that can be customized to de
 \end{enumerate}
 Among these modules, the framework can incorporate specific modules to adapt the security level of application at runtime. In this scenario we use dynamic security framework.
 The Inter-trust framework is a dynamic security framework \cite{ayed;etal:2013} which supports trustworthy applications based on the enforcement and dynamic adaptation of security policies. Here, security policies are first specified using a security editor (e.g., MotOrBac, an Organization-Based Access Control policy editor) and then negotiated between the different parties in a communication using a negotiation module. When the security requirements change at runtime, the security policies are renegotiated. The negotiated security policy is then analyzed and interpreted by the policy engine and the policy interpreter modules. These modules are responsible for identifying changes in the security policy that require adapting the security concerns (e.g., authentication, encryption) deployed inside the application dynamically, at runtime.\par
+
+\begin{figure}[ht]
+	\begin{center}
+  \includegraphics[width=1.0\textwidth,natwidth=769,natheight=412]{./Talk1/figures/figure-02.png}
+  \end{center}
+  \caption{The Inter-trust framework \cite{ayed;etal:2013}.}
+  \label{fig:02}
+\end{figure}
 
 \subsubsection{Integration of FamiWare and Inter-trust framework}
 FamiWare is a family of middlewares specially designed and implemented for dealing with the heterogeneity of WSNs devices. It also provides a mechanism to be reconfigured at runtime when the context changes. However, it does not focus on providing security. Therefore, if we want to extend FamiWare with the benefits provided by the INTER-TRUST framework, the first thing to do is to integrate INTER-TRUST into the FamiWare family. There are two main steps for integration of the two application models, the first step is the integration of the INTER-TRUST modules and the INTER-TRUST security concerns into the FamiWare product line. This implies the extension of both the variability model and the base model of FamiWare. \par
@@ -364,7 +368,7 @@ In conclusion, our hope is that the reader of this text has received a general o
 \fi
 
 
-\begin{thebibliography}{99}
+\begin{thebibliography}{01}
 \bibitem {leitfaden} M. Waldburger, P. Poullie, B. Stiller: \emph{Guideline for Seminar Reports}, Communication Systems Group, Department of Infromatics, University of Zurich, January 2013. \url{http://www.csg.uzh.ch/teaching/guideline-seminar-report-v05.pdf}.
 \bibitem {chan;perrig:2003} Chan, Haowen, and Adrian Perrig: \emph{Security and privacy in sensor networks}, Computer 36.10 (2003): 103-105. \url{http://www.netsec.ethz.ch/publications/papers/ieee-secure-sensor-nets.pdf}.
 \bibitem {wang;attebury;ramamurthy:2006} Y. Wang, G. Attebury, and B. Ramamurthy: \emph{A survey of security issues in Wireless Sensor Networks}, IEEE Communications Surveys and Tutorials, Vol. 8, No. 2, pp. 2-23, 2006.
@@ -393,4 +397,6 @@ In conclusion, our hope is that the reader of this text has received a general o
 \bibitem {liang;shi:2005} Z. Liang and W. Shi, \emph{PET: A Personalized Trust model with reputation and risk evaluation for P2P resource sharing}, In Proceedings of the HICSS-38, Hilton Waikoloa Village Big Island, Hawaii, January 2005.
 \end{thebibliography}
 
+\iffalse
 \end{document}
+\fi
