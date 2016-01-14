@@ -245,7 +245,7 @@ With a reputation system in place, the base station chooses for each new interac
   \label{fig:04}
 \end{figure}
 
-As we expect in Figure \ref{fig:04}, we see that the better the sensor behavior, the higher the ratio of unchecked messages, and thus the more resources saved. However, Figure \ref{fig:05} seems not to confirm the results of the model checking analysis: the ratio of corrupted messages over the forwarded is lower for $\theta$ = 0.8 than for $\theta$ = 0.2. 
+As we expect in Figure \ref{fig:04}, we see that the better the sensor behavior, the higher the ratio of unchecked messages, and thus the more resources saved. However, Figure \ref{fig:05} seems not to confirm the results of the model checking analysis: the ratio of corrupted messages over the forwarded is lower for $\theta$ = 0.8 than for $\theta$ = 0.2. Nonetheless, the authors urge us to mind that "the simulation computes an average value, while the model checking algorithm estimates the probability of exceeding a threshold. Hence, we can conclude that on average the ratio between corrupted and forwarded messages is lower for $\theta$ = 0.8, but the probability that the number of corrupted messages exceeds a percentage of the forwarded messages is lower for $\theta$ = 0.2" \cite{vigo;etal:2014}. This is due to the decreasing number of checks that are performed for $\theta$ = 0.8, and to the fact that the model checking analysis has a temporal horizon: for a fixed time limit t, the total number of messages processed by the system is higher for $\theta$ = 0.8 than for $\theta$ = 0.2.\par
 
 \begin{figure}[ht]
 	\begin{center}
@@ -254,7 +254,7 @@ As we expect in Figure \ref{fig:04}, we see that the better the sensor behavior,
   \caption{Ratio between corrupted and forwarded messages \cite{vigo;etal:2014}.}
   \label{fig:05}
 \end{figure}
-Nonetheless, as the authors state, we "observe that the simulation computes an average value, while the model checking algorithm estimates the probability of exceeding a threshold. Hence, we can conclude that on average the ratio between corrupted and forwarded messages is lower for $\theta$ = 0.8, but the probability that the number of corrupted messages exceeds a percentage of the forwarded messages is lower for $\theta$ = 0.2" \cite{vigo;etal:2014}. This is due to the decreasing number of checks that are performed for $\theta$ = 0.8, and to the fact that the model checking analysis has a temporal horizon: for a fixed time limit t, the total number of messages processed by the system is higher for $\theta$ = 0.8 than for $\theta$ = 0.2.\par
+
 Through this reputation system, we dynamically adjust the probability that a security policy will be strengthened or weakened. In this way, we find an optimized balance between security strength and resource usage while adapting to the current environment and security needs of the WSNs. \par
 
 \subsection{Dynamic Reconfiguration - Inter-trust \& Famiware}
